@@ -6,20 +6,37 @@ int main(){
     cout << "Bem Vindo ao Jogo de advinhacao" << endl;
     cout << "*******************************" << endl;
 
+    cout << "Escolha seu nivel: " << endl;
+    cout << "Facil (F), Medio (M) ou Dificil (D)" << endl;
+
+    char dificuldade;
+
+    cin >> dificuldade;
+
+    int numero_de_tentativas; 
+
+    if(dificuldade == 'F'){
+        numero_de_tentativas = 15;
+    } else if(dificuldade == 'M'){
+        numero_de_tentativas = 10;
+    } else {
+        numero_de_tentativas = 5;
+    }
+
     const int NUM_SECRETO = 42;
     // cout << "Numero secreto eh: " << num_secreto << endl;
 
     bool nao_acertou = true;
-    int tentativas = 1;
+    int tentativas;
     double pontos = 1000.0;
 
-    while(nao_acertou){
+    for(tentativas = 1; tentativas <= numero_de_tentativas; tentativas++){
        int chute;
        cout << "Tentativa " << tentativas << endl;
        cout << "Qual seu chute? ";
        cin >> chute;
        cout << "O numero do chute foi " << chute << endl;
-       tentativas++; 
+       
 
        double pontos_perdidos = abs(chute - NUM_SECRETO)/2.0;
        pontos = pontos - pontos_perdidos;
@@ -30,6 +47,7 @@ int main(){
        if(acertou){
         cout << "Prabens vc acertou!!" << endl;
         nao_acertou = false;
+        break;
        } else if (maior){
         cout << "Seu chute foi maior do que numero secreto!!\n\n" << endl;
        } else {
@@ -37,8 +55,14 @@ int main(){
        }
        }
        cout << "Fim de Jogo!\n";
-       cout << "Voce acertou na sua tentativa de numero " << tentativas - 1 << endl;
-       cout.precision(2);
-       cout << fixed;
-       cout << "Voce ficou com " << pontos << " de pontuacao!!" << endl;
+       
+       if(nao_acertou){
+        cout << "Voce perdeu!! tente novamente" << endl;
+       } else {
+        cout << "Voce acertou na sua tentativa de numero " << tentativas - 1 << endl;
+        cout.precision(2);
+        cout << fixed;
+        cout << "Voce ficou com " << pontos << " de pontuacao!!" << endl;        
+       }
+
 }
