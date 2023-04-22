@@ -38,5 +38,7 @@ int main(){
        }
        cout << "Fim de Jogo!\n";
        cout << "Voce acertou na sua tentativa de numero " << tentativas - 1 << endl;
+       cout.precision(2);
+       cout << fixed;
        cout << "Voce ficou com " << pontos << " de pontuacao!!" << endl;
 }
