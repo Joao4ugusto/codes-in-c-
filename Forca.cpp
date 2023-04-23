@@ -18,18 +18,29 @@ bool letraExiste(const char chute){
     return false;
 }
 
+bool nao_acertou(){
+    for(int i = 0; i < PALAVRA_SECRETA.size(); i++){
+        if(!chutou[PALAVRA_SECRETA[i]]){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool nao_enforcou(){
+  return chutes_errados.size() < 5;
+}
+
+
 int main(){
     
     cout << "*******************" << endl;
     cout << "**Jogo da Forca***"  << endl;
     cout << "*******************" << endl;
 
-    bool nao_acertou = true;
-    bool nao_enforcou = true;
-
     int tentativas = 0; // número de tentativas feitas pelo jogador
 
-    while(nao_acertou && nao_enforcou){ // adicionado o limite de tentativas
+    while(nao_acertou() && nao_enforcou()){ // adicionado o limite de tentativas
         
         cout << "Letras chutadas: ";
         for(int i = 0; i < chutes_errados.size(); i++){
