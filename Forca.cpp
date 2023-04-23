@@ -31,12 +31,15 @@ bool nao_enforcou(){
   return chutes_errados.size() < 5;
 }
 
-
-int main(){
-    
+void imprime_cabecalho(){
     cout << "*******************" << endl;
     cout << "**Jogo da Forca***"  << endl;
     cout << "*******************" << endl;
+}
+
+int main(){
+    
+    imprime_cabecalho();
 
     int tentativas = 0; // número de tentativas feitas pelo jogador
 
@@ -74,6 +77,13 @@ int main(){
         }
         cout << endl;
 
+    }
+    cout << "Fim de jogo" << endl;
+    if(nao_acertou()){
+        cout << "Voce perdeu!!" << endl;
+        cout << "A palavra secreta era: " << PALAVRA_SECRETA << endl;
+    } else {
+        cout << "Voce ganhou!!" << endl;
     }
 
     system("pause"); // pausa a execução para visualizar o resultado
